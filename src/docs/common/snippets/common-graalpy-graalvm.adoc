@@ -36,6 +36,7 @@ Your Java runtime '23.0.1+11-jvmci-b01' with compiler version '24.1.1' is incomp
 
 You need to override the versions of the following dependencies according to the error message:
 
+// XXX isn't it that polyglot/python/python-embedding are pulled in by micronaut-graalpy dependency?
 [source, text]
 ----
 org.graalvm.polyglot:polyglot
@@ -59,6 +60,7 @@ resource:META-INF/native-image/proxy-config.json[]
 
 === Native Executable Generation
 
+:exclude-for-build:gradle
 To generate a native executable using Maven, run:
 
 [source, bash]
@@ -67,3 +69,17 @@ To generate a native executable using Maven, run:
 ----
 
 The native executable is created in the _target_ directory and can be run with `./target/micronautguide`.
+
+:exclude-for-build:
+
+:exclude-for-build:maven
+To generate a native executable using Gradle, run:
+
+[source, bash]
+----
+./gradlew nativeCompile
+----
+
+The native executable is created in `build/native/nativeCompile` directory and can be run with `build/native/nativeCompile/micronautguide`.
+
+:exclude-for-build:
